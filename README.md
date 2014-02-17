@@ -10,6 +10,7 @@ Touch enabled jQuery plugin that lets you create beautiful responsive carousel s
 * Mouse Slide Events
 * Fully Customizable
 * Choose the number of items to be displayed
+* Lazy Load (with preload option)
 * Multiple Sliders
 * CSS3 3d Transitions
 * Custimizable controls

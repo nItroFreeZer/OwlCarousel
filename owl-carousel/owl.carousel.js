@@ -65,8 +65,8 @@ if (typeof Object.create !== "function") {
         logIn : function () {
             var base = this;
 
-            base.$elem.data("owl-originalStyles", base.$elem.attr("style"))
-                      .data("owl-originalClasses", base.$elem.attr("class"));
+            base.$elem.data("owl-originalStyles", base.$elem.attr("style"));
+            base.$elem.data("owl-originalClasses", base.$elem.attr("class"));
 
             base.$elem.css({opacity: 0});
             base.orignalItems = base.options.items;
@@ -1134,7 +1134,8 @@ if (typeof Object.create !== "function") {
                 $item,
                 itemNumber,
                 $lazyImg,
-                follow;
+                follow,
+                preloadDisplays;
 
             if (base.options.lazyLoad === false) {
                 return false;
@@ -1162,7 +1163,8 @@ if (typeof Object.create !== "function") {
                 } else {
                     follow = true;
                 }
-                if (follow && itemNumber < base.currentItem + base.options.items && $lazyImg.length) {
+                preloadDisplays = base.options.lazyPreloadDisplays * base.options.items;
+                if (follow && itemNumber < base.currentItem + base.options.items + preloadDisplays && $lazyImg.length) {
                     base.lazyPreload($item, $lazyImg);
                 }
             }
@@ -1371,9 +1373,8 @@ if (typeof Object.create !== "function") {
                 }
             }
             base.clearEvents();
-            base.$elem
-                .attr("style", base.$elem.data("owl-originalStyles") || "")
-                .attr("class", base.$elem.data("owl-originalClasses"));
+            base.$elem.attr("style", base.$elem.data("owl-originalStyles") || "");
+            base.$elem.attr("class", base.$elem.data("owl-originalClasses"));
         },
 
         destroy : function () {
@@ -1486,6 +1487,7 @@ if (typeof Object.create !== "function") {
         lazyLoad : false,
         lazyFollow : true,
         lazyEffect : "fade",
+        lazyPreloadDisplays : 0,
 
         autoHeight : false,
 

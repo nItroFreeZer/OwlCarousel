@@ -543,6 +543,12 @@ $(document).ready(function() {
                   <td>Default is fadeIn on 400ms speed. Use false to remove that effect.</td>
                 </tr>
                 <tr>
+                  <td><span class="text-emp">lazyPreloadDisplays</span></td>
+                  <td>0</td>
+                  <td>int</td>
+                  <td>This variable allows you to set the number of displays (all items displayed at a time; see variable items) preloaded.</td>
+                </tr>
+                <tr>
                   <td><span class="text-emp">autoHeight</span></td>
                   <td>false</td>
                   <td>boolean</td>
@@ -708,6 +714,7 @@ $("#owl-example").owlCarousel({
     lazyLoad : false,
     lazyFollow : true,
     lazyEffect : "fade",
+    lazyPreloadDisplays : 0,
 
     //Auto height
     autoHeight : false,
